@@ -1,0 +1,7 @@
+/* footer 아래에 고정되는 위치를 index.html에 있는 상단 태그를 이용해서 기준을 잡아줌. */
+/* #index_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+} */

@@ -1,0 +1,33 @@
+<div class="btn_container flex">
+    <!-- <div class="empty_box"></div> -->
+    <p class="title">내가 쓴 글 보기</p>
+    <div class="swap_btn_wrap flex">
+        <button class="btn" onclick="seeMyPost()">게시글 보기<!-- <a href="#mypage"></a> --></button> <!-- a태그는 왜?? -->
+        <button class="btn"><a href="#comment">댓글 보기</a></button>
+    </div>
+</div>
+
+<section id="mypost_container">
+    <div id="post_wrap">
+        <div class="profile">
+            <a class="nickname" href="#" title="nickname" target="_blank">홍길동</a>
+        </div>
+        <div class="category_wrap">
+            <p class="category">#hashTag</p>
+        </div>
+        <div class="text_box">
+        </div>
+        <div class="revise_wrap">
+            <input type="button" value="수정" class="edit" />
+            <input type="button" value="삭제" class="cut" />
+        </div>
+    </div>
+</section>
+
+<!-- 상단 바로가기 버튼 -->
+
+
+<a class="top_btn write" href="#mypage" title="사이트 상단이동" onclick="javascript:window.scrollTo(0,0)">
+    <p>Top</p>
+    <i class="fa-solid fa-chevron-up"></i>
+</a>

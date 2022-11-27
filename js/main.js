@@ -1,7 +1,8 @@
 import { authService } from "./firebase.js";
 import { handleLocation, route } from "./router.js";
 import { openModal, closeModal, dropdown, showMenu, modaldropdown, modalshowMenu } from "./modal.js";
-import { pu_openModal, pu_closeModal} from "./profile_update.js";
+import { pu_openModal, pu_closeModal, feed_openModal, feed_closeModal} from "./profile_update.js";
+
 // import { swiper } from "./keyword.js";
 
 //다경 백엔드 연결
@@ -17,6 +18,13 @@ import {
   onFileChange,
   DeletePhoto,
 } from "./pageJs/profile.js";
+
+// 채하 백엔드 연결
+// import { handleAuth, onToggle, logout,  } from "./pageJs/login.js";
+import { /* goToProfile, */ goToFilter} from "./router.js";
+import { save_post, update_post, onEditing, delete_post, seeMyPost} from "./pageJs/new_main.js";
+import{ search_post } from "./pageJs/page2.js";
+
 
 
 // hash url 변경 시 처리
@@ -58,6 +66,8 @@ window.showMenu = showMenu;
 window.pu_openModal = pu_openModal;
 window.pu_closeModal = pu_closeModal;
 window.modalshowMenu = modalshowMenu;
+window.feed_openModal = feed_openModal;
+window.feed_closeModal = feed_closeModal;
 // window.swiper = swiper;
 
 //다경 백엔드 연결
@@ -69,3 +79,16 @@ window.logoutAction=logoutAction;
 window.changeProfile=changeProfile;
 window.onFileChange=onFileChange;
 window.DeletePhoto=DeletePhoto;
+
+// 채하 백엔드 연결
+// window.goToProfile = goToProfile;
+window.socialLogin = socialLogin;
+window.onFileChange = onFileChange;
+window.changeProfile = changeProfile;
+window.save_post = save_post;
+window.update_post = update_post;
+window.onEditing = onEditing;
+window.delete_post = delete_post;
+window.seeMyPost = seeMyPost;
+window.goToFilter = goToFilter;
+window.search_post = search_post;

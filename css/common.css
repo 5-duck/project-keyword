@@ -15,11 +15,13 @@ html {
 }
 
 body {
+    position: relative;;
+    width: 100%;
+    height: 100%;
     color: #333;
     font-family: 'Open Sans','Noto Sans KR', sans-serif;
     /* Open Sans는 영문만 지원하기 때문에, 반드시 뒤에 Noto Sans KR을 붙혀줘야 한글 폰트까지 적용됩니다. */
     overflow-x: hidden;
-    position: relative;;
 }
 
 ul,

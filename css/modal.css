@@ -4,7 +4,7 @@
 .modal_dropdown {
   position: absolute;
   display: inline-block;
-  top: 80px;
+  top: 65px;
   left: 100%;
   margin: 0 0 0 -250px;
   z-index: 1;
@@ -18,7 +18,7 @@
 .modal_dropbtn {
   display: block;
   border: 2px solid rgb(94, 94, 94);
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: #fcfcfc;
   font-weight: 400;
   color: rgb(124, 124, 124);
@@ -37,7 +37,7 @@
   background-color: #fcfcfc;
   min-width: 240px;
   border-radius: 8px;
-  height: 150px;
+  height: 220px;
   overflow: scroll;
   box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
 }
@@ -113,7 +113,7 @@ body {
 
   width: 500px;
   height: 500px;
-  padding: 30px;
+  padding: 25px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -134,19 +134,19 @@ body {
 }
 .modal_header {
   position: absolute;
-  width: 350px;
-  height: 30px;
-  top: 30px;
+  top: 10px;
   left: 50%;
   translate: -50% 0;
-  /* background-color: yellow; */
+  width: 350px;
+  height: 30px;
+  font-size: 22px;
 }
 .modal_user {
   width: 100%;
   height: 40px;
   /* background-color: yellow; */
   position: absolute;
-  top: 130px;
+  top: 120px;
   left: 0px;
 }
 .modal_user_box {
@@ -174,7 +174,7 @@ body {
   position: absolute;
   width: 100%;
   height: 200px;
-  top: 180px;
+  top: 170px;
   left: 50%;
   translate: -50% 0;
   text-align: left;
@@ -186,19 +186,29 @@ body {
   height: 40px;
   /* background-color: white; */
   position: absolute;
-  top: 400px;
-  left: 100%;
-  margin: 0 0 0 -200px;
+  bottom: 10px;
+  right: 0;
 }
+
+.btn_box > button {
+  /* box-shadow: 0 0 5px #aaa; */
+  transition-duration: .3s;
+}
+
+.btn_box > button:hover {
+  border: 1px solid #ffa920;
+  background-color: #ffa920;
+  color: #f2f2f2;
+}
+
 .com_btn {
   position: absolute;
   width: 60px;
   height: 100%;
-  left: 60px;
+  left: 72px;
   background-color: white;
   border-radius: 5px;
   border: 1px solid #eee;
-  box-shadow: 0 0 11px #a1a1a1;
 }
 
 .close_btn {
@@ -210,5 +220,287 @@ body {
   background-color: white;
   border-radius: 5px;
   border: 1px solid #eee;
-  box-shadow: 0 0 11px #a1a1a1;
 }
+
+
+
+
+/* newfeed modal */
+
+/* input 게시글 덧글 창 */
+.modal_text_box {
+  max-width: 650px;
+  max-height: 200px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #aaa;
+  /* border: none; */
+  font-size: 20px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  overflow: auto;
+}
+
+
+/* ------------------------------------#modal_post_container 시작 */
+
+#modal_post_container {
+  position: fixed;
+  top: 0;
+  left: 0;  
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+
+}
+
+#modal_post_container #post_wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 750px;
+  max-height: 750px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ffa920;
+  border-radius: 15px;
+  background-color: white;
+
+  /* background-color: aquamarine; */
+}
+
+.post_wrap_head{
+  position: relative;
+  width: 100%;
+  height: 7%;
+  /* background-color: gray; */
+  border-radius: 15px;
+}
+
+.post_exit{
+  color: #333;
+  font-size: 25px;
+  text-align: center;
+  position: relative;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  top: 7%;
+  left: 95%;
+}
+.post_wrap_body{
+  position: fixed;
+  width: 100%;
+  height: 700px;
+  overflow: auto;
+
+}
+#modal_post_container .post_wrap_body::-webkit-scrollbar{
+  display: none;
+}
+
+#modal_post_container #post_wrap .profile {
+  position: relative;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  background-image: url(../image/Keyword.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+
+#modal_post_container #post_wrap .nickname {
+  position: absolute;
+  top: 60px;
+  right: -95%;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  /* background-color: red; */
+}
+
+
+#modal_post_container #post_wrap .category_wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 100px;
+  margin-right: 40px;
+  padding: 5px;
+  font-size: 20px;
+  
+  /* background-color: red; */
+}
+
+
+#modal_post_container .comment_box {
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+
+#modal_post_container .comment {
+  max-width: 600px;
+  min-height: 80px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding: 3px 10px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+}
+
+#modal_post_container .comment_btn {
+  display: inline-block;
+  /* width: 100%; */
+  padding: 3px 8px;
+  margin-bottom: 15px;
+  margin-left: 550px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #333;
+  border-radius: 10px;
+  transition-duration: .3s;
+  left: 450px;
+}
+
+#modal_post_container .comment_btn:hover {
+  background-color: #ffa920;
+  border: 1px solid #ffa920;
+  color: #f2f2f2;
+}
+
+#modal_post_container #post_wrap #post_form .revise_wrap{
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+#modal_post_container #post_wrap #post_form .revise_wrap input {    
+  margin-top: 20px;
+  padding: 5px 15px;
+  font-size: 22px;
+  border: 1px solid #ffa920;
+  border-radius: 10px;
+}
+
+#modal_post_container #post_wrap #post_form .revise_wrap input.edit {
+margin-right: 10px;
+}
+
+#modal_post_container #post_wrap #post_form .revise_wrap input.cut {
+  margin-right: 25px;
+}
+
+/* ------------------------------------.comment_container 시작 */
+
+#yj_commment_container_hi {
+  max-width: 750px;
+  max-height: 250px;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  /* transform: translateX(-50%); */
+  /* background-color: red; */
+  padding: 40px;
+}
+
+.yj_comment{
+  width: 100%;
+  height: 10%;
+  font-size: 24px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+.yj_comment_container {
+  width: 100%;
+  height: 90%;
+  /* background-color: red; */
+  margin-bottom: 10px;
+  /* border: 1px solid black; */
+  /* overflow: auto; */
+
+}
+
+.yj_comment_container > .yj_card {
+  margin-bottom: 15px;
+}
+
+.yj_card-header {
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  border-radius: 15px;
+}
+
+.yj_comment_pic_wrap {
+  max-width: 40px;
+  width: 100%;
+}
+
+.yj_comment_pic_wrap > img {
+  max-width: 36px;
+  max-height: 36px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+}
+
+.yj_comment_wrap {
+  padding: 10px 0 10px 7px;
+  font-size: 16px;
+}
+
+.yj_comment_box {
+  margin-bottom: 10px;
+}
+
+
+.yj_post_comment_title {
+  padding: 0 5px;
+  line-height: 3;
+  font-size: 16px;
+  border-right: 1px solid #aaa;
+}
+
+.yj_post_comment_title > p {
+  max-width: 250px;
+  /* background-color: red; */
+}
+
+.yj_post_comment {
+  margin-left: 10px;
+  padding: 5px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+}
+
+/* .comment_wrap .user_icon {
+  width: 20px;
+  height: 20px;
+} */
