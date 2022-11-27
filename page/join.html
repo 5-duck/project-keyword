@@ -1,4 +1,4 @@
-<div class="join_background"></div>
+<!-- <div class="join_background"></div>
 <div id="join_form_container">
   <div class="join_form_warp">
     <a class="join_exit" href="#login">
@@ -7,9 +7,7 @@
     <h1 class="join_title">회원가입</h1>
     <form
       method="post"
-      action="정보를 서버로 보낼 때 도착할 서버의url"
-      id="join_form"
-    >
+      id="join_form" onsubmit="joinAction(event)">
       <fieldset>
         <div id="form_sort_wrap">
           <div id="name_wrap">
@@ -65,6 +63,66 @@
               id=""
               class="btn_input"
             />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div> -->
+<div class="join_background"></div>
+<div id="join_form_container">
+  <div class="join_form_warp">
+    <a class="join_exit" href="#login">
+      <i class="fa-regular fa-circle-xmark"></i>
+    </a>
+    <h1 class="join_title">회원가입</h1>
+    
+    <form id="join_form" onsubmit="joinAction(event)">
+      <fieldset>
+        <div id="form_sort_wrap">
+          <div id="name_wrap">
+            <input
+              class="join_input"
+              type="text"
+              placeholder="이름을 입력하세요."
+              id=""
+            />
+          </div>
+          <div id="email_wrap">
+            <input
+              class="join_input"
+              type="email"
+              placeholder="이메일을 입력하세요."
+              id="email"
+            />
+          </div>
+          <div id="double_check_btn" class="join_btn_hover">
+            <input
+              class="join_input"
+              type="button"
+              value="중복 확인"
+              id="double_check"
+              class="btn_input"
+            />
+          </div>
+          <div id="password_wrap">
+            <input
+              class="join_input"
+              type="password"
+              placeholder="비밀번호를 입력하세요."
+              id="pw"
+            />
+          </div>
+          <div id="re_password_wrap">
+            <input
+              class="join_input"
+              type="password"
+              placeholder="비밀번호를 한 번 더 입력하세요."
+              id=""
+            />
+          </div>
+          <div id="join_btn" class="join_btn_hover">
+            <input class="join_input" type="submit" value="회원가입하기" id="joinBtn" class="btn_input"/>
           </div>
         </div>
       </fieldset>

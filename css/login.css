@@ -37,7 +37,7 @@
 #login_title {
   text-align: center;
   font-size: 2.25rem;
-  padding: 50px 0 75px 0;
+  padding: 50px 0 50px 0;
   color: #f2f2f2;
 }
 
@@ -150,9 +150,37 @@ fieldset .find_wrap .find_pw {
 }
 
 #login_submit.normal_login {
+  margin-bottom: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.find_pw_box {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 50px;
+  border: none;
+  text-align: center;
+  font-family: "Open";
+  font-size: 1.25rem;
+  /* value속성이 font로 인식된다. 처음 알았음. */
+  font-weight: 500;
+  background-color: #f2f2f2;
+  transition-duration: 0.3s;
+  /* 사진 컨텐츠 위치 */
   margin-bottom: 50px;
   font-size: 18px;
   border-radius: 10px;
+  background-position: 40px;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  padding-top: 15px;
+  color:#333;
+}
+
+.find_pw_box:hover {
+  background-color: #ffa920;
 }
 
 .simple_login_title {

@@ -14,7 +14,7 @@
               class="shadow_input"
             />
           </div>
-          <div class="password_wrap">
+          <div class="password_wrap ">
             <input
               type="password"
               id="pw"
@@ -30,14 +30,14 @@
             </div>
           </label>
 
-          <div class="find_wrap">
+          <div class="find_wrap display_none">
             <!-- target="_blank" -->
-            <a href="#main" title="로그인 찾기 페이지로" class="find_id">아이디 찾기</a>
+            <a href="#main" title="로그인 찾기 페이지로" class="find_id display_none">HOME</a>
             <a
               href="#"
               title="비밀번호 찾기 페이지로"
               target="_blank"
-              class="find_pw"
+              class="find_pw display_none"
               >비밀번호 찾기</a
             >
             <a class="find_pw" onclick="moveJoinPage()">회원가입 하기 </a>
@@ -50,6 +50,7 @@
             class="normal_login"
             value="Login"
           />
+          <a class="find_pw_box" onclick="moveJoinPage()">회원가입 하기 </a>
           
           <p class="simple_login_title">간편 로그인</p>
           <!-- <input

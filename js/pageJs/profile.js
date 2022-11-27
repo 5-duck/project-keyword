@@ -15,7 +15,7 @@ export const onFileChange = (event) => {
   reader.onloadend = (finishedEvent) => {
      const imgDataUrl = finishedEvent.currentTarget.result;
      localStorage.setItem("imgDataUrl", imgDataUrl);
-    document.getElementById("profileView").src = imgDataUrl;
+    document.getElementById("profileView1").src = imgDataUrl;
   };
 };
 
@@ -42,7 +42,7 @@ export const changeProfile = async (event) => {
     photoURL: downloadUrl ? downloadUrl : null,
   })
     .then(() => {
-      alert("프로필 수정 완료(근데이거왜여러번뜸_다경)");
+      console.log('프로필 수정 완료!_근데 이거여러번뜨냥 _')
     })
     .catch((error) => {
       alert("프로필 수정 실패");

@@ -8,6 +8,10 @@
     word-break: keep-all;
 }
 
+.display_none {
+    display: none;
+}
+
 html {
     font-size: 16px;
     /* line-height: 1.15em */

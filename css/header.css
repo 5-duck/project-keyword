@@ -1,6 +1,25 @@
+
+/* sideToggle()에 붙는 속성 */
+#sidebar.block {
+    left: 0%;
+}
+
+#sidebar.none {
+    left: -100%;
+}
+
 @media screen and (max-width:1540px) {
     #sidebar {
         left: -100%;
+    }
+
+    #mobile_sidebar .arrow {
+        transition-delay: .65s;
+        opacity: 1;
+    }
+
+    #mobile_sidebar .arrow::after,#mobile_sidebar .arrow::before {
+        background-color: #f2f2f2;
     }
 }
 
@@ -23,8 +42,25 @@
         font-size: 16px;
     }
 
+    #mobile_sidebar .arrow {
+        transition-delay: 0s;
+    }
+
     #post_container #write_wrap {
         max-width: 528px;
+    }
+
+    #post_container #write_wrap > .dropdown {
+        top: -55px;
+    }
+
+    .yj_search_box {
+    left: 15px;
+    width: 240px;
+    }
+
+    #post_container #write_wrap {
+        margin-bottom: 0px;
     }
 }
 
@@ -44,11 +80,37 @@
     }
 
     #mobile_sidebar .arrow {
-        transition-delay: .65s;
         opacity: 1;
     }
 
     #hashtag_container #hashtag_wrap .hashtag_contents.flex {
         margin-left: 0;
+    }
+
+    #mobile_sidebar .arrow {
+        top: 200px;
+        width: 80px;
+    }
+
+    #mobile_sidebar .arrow::after,#mobile_sidebar .arrow::before {
+        background-color: #333;
+    }
+
+    .top_btn {
+        width: 60px;
+        height: 60px;
+        right: 30px;
+    }
+
+    .top_btn.top {
+        bottom: 120px;
+    }
+
+    .top_btn > p {
+        display: none;
+    }
+
+    .top_btn > i {
+        top: 33%;
     }
 }

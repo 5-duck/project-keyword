@@ -13,7 +13,11 @@ import { dbService, authService } from "../firebase.js";
 
 
 // 글 등록
-export const save_post = async (event) => {
+export const save_post = async () => {
+
+    /* ddd시작 */
+    const drop_keyword = document.getElementById("drop_keyword");
+    /* ddd끝 */
 
   const post = document.getElementById("post");
   const { uid, photoURL, displayName } = authService.currentUser;
@@ -27,8 +31,12 @@ export const save_post = async (event) => {
         creatorId: uid,
         profileImg: photoURL,
         nickname: displayName,
+        /* ddd시작 */
+        drop_keyword : drop_keyword.innerText
+        /* ddd끝 */
       });
       post.value = "";
+      closeModal();
       getpostList();
     } else {
       alert("내용을 입력하세요");
@@ -116,14 +124,14 @@ export const getpostList = async () => {
   cmtObjList.forEach((cmtObj) => {
     const isOwner = currentUid === cmtObj.creatorId;
     const temp_html =         
-        `<div id="post_wrap" onclick="feed_openModal()">
+        `<div id="post_wrap" onclick="feed_openModal(${cmtObj.createdAt})">
             <div class="post_top_wrap">
               <div class="profile">
                 <img class="cmtImg" width="50px" height="50px" src="${cmtObj.profileImg}" alt="profileImg" />
-                <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
               </div>
+              <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
               <div class="category_wrap">
-                <p class="category">#hashTag</p>
+                <p class="category">${cmtObj.drop_keyword}</p>
               </div>
             </div>
             <div class="text_box">${cmtObj.text}</div>
@@ -173,7 +181,7 @@ export  const seeMyPost = async() => {
           <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
         </div>
         <div class="category_wrap">
-          <p class="category">#hashTag</p>
+          <p class="category">${cmtObj.drop_keyword}</p>
         </div>
       </div>
       <div class="text_box">${cmtObj.text}</div>
@@ -224,7 +232,7 @@ export const search_post = async () => {
             <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
           </div>
           <div class="category_wrap">
-            <p class="category">#hashTag</p>
+            <p class="category">${cmtObj.drop_keyword}</p>
           </div>
         </div>
         <div class="text_box">${cmtObj.text}</div>
@@ -240,7 +248,7 @@ export const search_post = async () => {
     </form>`;
     
     const div = document.createElement("div");
-    div.classList.add("mycardss");
+    div.classList.add("mycards");
     div.innerHTML = temp_html;
     commnetList.appendChild(div);
   });

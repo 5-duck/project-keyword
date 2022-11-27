@@ -15,25 +15,25 @@
                       float: right;">arrow_drop_down</span>
                 </button>
                 <div class="modal_dropdown_content">
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #운동
                     </div>
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #개발공부
                     </div>
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #카페
                     </div>
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #인스턴트
                     </div>
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #게임
                     </div>
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #오둥이
                     </div>
-                    <div class="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
                         #잡담
                     </div>
                 </div>
@@ -41,9 +41,11 @@
             <div class="modal_user">
                 <div class="modal_user_box">
                     <div class="modal_user_pic">
-                        <img class="cmtImg" src=""/>
+                        <img class="cmtImg" src="" id="cmtImg"/>
                     </div>
-                    <div class="modal_user_nickname"></div>
+                    <div class="modal_user_nickname">
+                        <span id="nickname1">닉네임 없음</span>
+                    </div>
                 </div>
             </div>
             <div>
@@ -60,78 +62,18 @@
 </div>
 <!-- new feed modal -->
 <div id="modal_post_container" class="hidden">
-    <div id="post_wrap">
-     <div class="post_wrap_head">
-        <a class="post_exit" onclick="feed_closeModal()">
-            <i class="fa-regular fa-circle-xmark"></i>
-          </a>
-     </div>
-     <div class="post_wrap_body">
-      <div class="profile">
-        <a class="nickname" title="nickname" target="_blank">홍길동</a>
-      </div>
-      <div class="category_wrap">
-        <p class="category">#hashTag</p>
-      </div>
-      <div class="modal_text_box">
-      </div>
-      
-      <!-- 댓글창 -->
-      <!-- 여기있는거 복붙 -->
-      <div id="yj_commment_container_hi">
-        <div class="yj_comment">#comment</div>
-        <form method="post" action="서버가 받을 url" id="post_form">
-            <div class="comment_box">
-              <textarea placeholder="댓글을 작성해주세요." class="comment"></textarea>
-              <input type="submit" value="등록" class="comment_btn" />
-            </div>
-          </form>
-        <div class="yj_comment_container">
-          <div class="yj_card">
-            <div class="yj_card-header">
-              <div class="yj_comment_wrap flex">
-                <div class="yj_comment_pic_wrap">
-                  <img src="../image/Keyword.png" title="profile pic">
-                </div>
-                <div class="yj_post_comment_title">
-                  <p>박휘인</p>
-                </div>
-                <div class="yj_post_comment">오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="yj_card">
-            <div class="yj_card-header">
-              <div class="yj_comment_wrap flex">
-                <div class="yj_comment_pic_wrap">
-                  <img src="../image/Keyword.png" title="profile pic">
-                </div>
-                <div class="yj_post_comment_title">
-                  <p>박휘인</p>
-                </div>
-                <div class="yj_post_comment">오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은 금요일입니다.오늘은
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+
+
 <!-- <section id="mypage_container"> -->
 <section id="post_container">
     <div id="write_wrap" class="flex">
-
-        <!-- 글쓰기 오픈 버튼 -->
         <a onclick="openModal()" title="글쓰기" class="wirte_btn btn">글쓰기</a>
 
         <!-- 검색창 search box!! -->
-            <input class="yj_search_box" type="search" id="search_contents" placeholder=" 검색어를 입력하세요...">
-            <button class="yj_search_bt" type="submit" onclick="search_post()">검색</button>
+        <input class="yj_search_box" type="search" id="search_contents" placeholder=" 검색어를 입력하세요...">
+        <button class="yj_search_bt" type="submit" onclick="search_post()">검색</button>
 
-        <!-- 드랍다운 키워드 ! -->
         <div class="dropdown">
             <button class="dropbtn" onclick="dropdown()">
                 <span class="dropbtn_icon">more_horiz</span>

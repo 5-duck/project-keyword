@@ -36,6 +36,8 @@ export const loginAction = (event) => {
     .then((userCredential) => {
       const user = userCredential.user;
       window.location.hash = "#main";
+      alert('로그인 성공>_<!')
+      console.log('로그인 성공!')
     })
     .catch((error) => {
       const errorMessage = error.message;
@@ -87,7 +89,6 @@ export const joinAction = (event) => {
     .then((userCredential) => {
       // Signed in
       alert("회원가입이 완료되었습니당 >_<");
-
       signOut(authService).then(() => {
         console.log("로그아웃 시키기 성공");
       });
@@ -109,6 +110,7 @@ export const logoutAction = () => {
       // Sign-out successful.
       localStorage.clear();
       console.log("로그아웃 성공");
+      alert('로그아웃 성공!')
     })
     .catch((error) => {
       // An error happened.

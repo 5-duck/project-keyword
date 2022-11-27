@@ -1,9 +1,9 @@
 /* 채하 시작 */
 import { authService } from "./firebase.js";
 import { getpostList } from "./pageJs/new_main.js";
-import { getpostList2 } from "./pageJs/page2.js";
+import { seeMyPost } from "./pageJs/new_mypage.js";
+import { seeMyComment } from "./pageJs/comment.js";
 /* 채하 끝 */
-
 
 const routes = {
   "/": "/page/keyword.html",
@@ -17,7 +17,7 @@ const routes = {
   footer: "/page/footer.html",
   404: "/page/404.html",
   /* 채하 시작 */
-  page2: "./pageJs/page2.html",
+  new_mypage: "./pageJs/new_mypage.html",
 /* 채하 끝 */
 };
 
@@ -56,7 +56,6 @@ export const handleLocation = async () => {
     const ysidebar = routes["sidebar"] || routes[404];
     const yfooter = routes["footer"] || routes[404];
 
-
     const headerhtml = await fetch(yheader).then((data) => data.text());
     const sidebarhtml = await fetch(ysidebar).then((data) => data.text());
     const footerhtml = await fetch(yfooter).then((data) => data.text());
@@ -67,18 +66,34 @@ export const handleLocation = async () => {
     document.getElementById("index_sidebar").innerHTML = sidebarhtml;
     document.getElementById("index_page").innerHTML = pagehtml;
     document.getElementById("index_footer").innerHTML = footerhtml;
+    
+    // 1127_다경수정작업 🟡🟡🟡🟡🟡🟡🟡🟡
+    console.log('cmtImg 불러와져?(글쓰기버튼 눌렀을때 사진)',document.getElementById("cmtImg"))
+    console.log('nickname1 불러와져?',document.getElementById("nickname1"))
+    document.getElementById("nickname1").textContent =
+    authService.currentUser.displayName ?? "닉네임 없음";
+    document.getElementById("cmtImg").src =
+    authService.currentUser.photoURL ?? "../image/test1.jpg";
+    console.log('profileView1 불러와져?',document.getElementById("profileView1"))
+    console.log('nickname 불러와져?',document.getElementById("nickname"))
+    document.getElementById("nickname").textContent =
+    authService.currentUser.displayName ?? "닉네임 없음";
+    document.getElementById("profileView1").src =
+    authService.currentUser.photoURL ?? "../image/test1.jpg";
+    getpostList();
+  // 1127_다경수정작업 🟡🟡🟡🟡🟡🟡🟡🟡
 
   }
 
   if (path === "mypage" || path === "comment"){
+
+
     const yfooter = routes["footer"] || routes[404];
     const yheader = routes["header"] || routes[404];
-
 
     const headerhtml = await fetch(yheader).then((data) => data.text());
     const pagehtml = await fetch(route).then((data) => data.text());
     const footerhtml = await fetch(yfooter).then((data) => data.text());
-
 
     document.getElementById("index_header").innerHTML = headerhtml;
     document.getElementById("index_sidebar").innerHTML = " ";
@@ -101,7 +116,6 @@ export const handleLocation = async () => {
     });
   }
 
-
   if (path === "mypage" || path === "main" || path == "comment") {
     const swiper = new Swiper(".mySwiper", {
       direction: "vertical",
@@ -114,33 +128,45 @@ export const handleLocation = async () => {
       },
     });
   };
+  
   /* 채하시작 */
-  if (path === "new_main") {
-    //if문으로 꼭 현재 어떤페이지인지 표시해주어야함
-    // 로그인한 회원의 프로필사진과 닉네임을 화면에 표시해줌.
-    console.log("authService.currentUser:", authService.currentUser);
-    document.getElementById("nickname").textContent =
-      authService.currentUser.displayName ?? "닉네임"; //null병합연산자 ??
+  // 🟡🟡🟡🟡🟡🟡🟡🟡 이 부분 54번 라인에 채하님이 합치심
+  // if (path === "mypage" || path === "main") {
+  //   getpostList();
+  // }
 
-    document.getElementById("profileImg").src =
-      authService.currentUser.photoURL ?? "../assets/blankProfile.webp";
-
-    getpostList();
-  }
-
-  if (path === "page2"){
-    getpostList2();
-  }
-  /* 채하끝 */
+  if (path === "new_mypage" || path === "mypage"){
+     // gg시작
+     const yheader = routes["header"] || routes[404];
+     const ysidebar = routes["sidebar"] || routes[404];
+     const yfooter = routes["footer"] || routes[404];
+ 
+     const headerhtml = await fetch(yheader).then((data) => data.text());
+     const sidebarhtml = await fetch(ysidebar).then((data) => data.text());
+     const footerhtml = await fetch(yfooter).then((data) => data.text());
+ 
+     const pagehtml = await fetch(route).then((data) => data.text());
+ 
+     document.getElementById("index_header").innerHTML = headerhtml;
+     document.getElementById("index_sidebar").innerHTML = sidebarhtml;
+     document.getElementById("index_page").innerHTML = pagehtml;
+     document.getElementById("index_footer").innerHTML = footerhtml;
+   // gg끝 
+     seeMyPost();
+   }
+   /* 채하끝 */
+   // gg채하시작
+   if (path === "comment"){
+     seeMyComment();
+   }
+   // gg채하끝
 };
 
 /* 채하시작 */
-export const goToFilter = () => {
-  window.location.hash = "#page2";
+export const goToMyPage = () => {
+  window.location.hash = "#new_mypage";
 };
 /* 채하끝 */
-
-
 // if ( || path === "comment" || path === "main"){
 //   const swiper = new Swiper(".mySwiperhead", {
 //     direction: "vertical",

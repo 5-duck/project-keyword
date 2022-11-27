@@ -1,7 +1,9 @@
 import { authService } from "./firebase.js";
 import { handleLocation, route } from "./router.js";
 import { openModal, closeModal, dropdown, showMenu, modaldropdown, modalshowMenu } from "./modal.js";
-import { pu_openModal, pu_closeModal, feed_openModal, feed_closeModal} from "./profile_update.js";
+
+//🌼🌼🌼🌼🌼🌼🌼🌼 profile_update 파일경로 수정 🌼🌼🌼🌼🌼🌼🌼
+import { pu_openModal, pu_closeModal, feed_openModal, feed_closeModal} from "./pageJs/profile_update.js";
 
 // import { swiper } from "./keyword.js";
 
@@ -19,17 +21,22 @@ import {
   DeletePhoto,
 } from "./pageJs/profile.js";
 
+//🌼🌼🌼🌼🌼🌼🌼🌼 profile_update 파일경로 수정 --> 아래 window 전역객체 만들기 🌼🌼🌼🌼🌼🌼🌼
+import { saveTargetComments, targetCommentsSearch} from "./pageJs/profile_update.js";
+
+
 // 채하 백엔드 연결
 // import { handleAuth, onToggle, logout,  } from "./pageJs/login.js";
-import { /* goToProfile, */ goToFilter} from "./router.js";
-import { save_post, update_post, onEditing, delete_post, seeMyPost} from "./pageJs/new_main.js";
-import{ search_post } from "./pageJs/page2.js";
+import { /* goToProfile, */ goToMyPage} from "./router.js";
+import { save_post, update_post, onEditing, delete_post, seeMyPost, /* ddd */ search_post} from "./pageJs/new_main.js";
+// gg시작
+import{ seeMyComment } from "./pageJs/comment.js";
+// gg끝
 
 
 
 // hash url 변경 시 처리
 window.addEventListener("hashchange", handleLocation);
-
 // 첫 랜딩 또는 새로고침 시 처리
 document.addEventListener("DOMContentLoaded", () => {
   // 로그인 상태 모니터링
@@ -39,10 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //다경 백엔드 추가한것!!
     handleLocation();
+    console.log('hash가 도대체 뭐니?',hash)
     const hash = window.location.hash;
     if (user) {
-      if (hash === "") {
-  
+      if (hash === ""|| hash === "login") {
         window.location.replace("#main");
       }
       window.location.replace("#main");
@@ -80,6 +87,11 @@ window.changeProfile=changeProfile;
 window.onFileChange=onFileChange;
 window.DeletePhoto=DeletePhoto;
 
+//🌼🌼🌼🌼🌼🌼🌼🌼 window 객체만들기 🌼🌼🌼🌼🌼🌼🌼
+window.saveTargetComments=saveTargetComments;
+window.targetCommentsSearch=targetCommentsSearch;
+
+
 // 채하 백엔드 연결
 // window.goToProfile = goToProfile;
 window.socialLogin = socialLogin;
@@ -90,5 +102,6 @@ window.update_post = update_post;
 window.onEditing = onEditing;
 window.delete_post = delete_post;
 window.seeMyPost = seeMyPost;
-window.goToFilter = goToFilter;
+window.goToMyPage = goToMyPage;
 window.search_post = search_post;
+window.seeMyComment=seeMyComment;
