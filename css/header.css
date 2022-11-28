@@ -1,16 +1,20 @@
 
 /* sideToggle()에 붙는 속성 */
-/* #sidebar.block {
+#sidebar.block {
     left: 0%;
 }
 
-#sidebar.none {
-    left: -100%;
-} */
+#mobile_sidebar .arrow {
+    transition-duration: .3s;
+}
 
 @media screen and (max-width:1540px) {
     #sidebar {
         left: -100%;
+    }
+
+    #sidebar.block {
+        left: 0%;
     }
 
     #mobile_sidebar .arrow {
@@ -89,11 +93,15 @@
 
     #mobile_sidebar .arrow {
         top: 200px;
-        width: 80px;
+        left: -10px;
     }
 
     #mobile_sidebar .arrow::after,#mobile_sidebar .arrow::before {
-        background-color: #333;
+        width: 16px;
+    }
+
+    #mobile_sidebar .arrow {
+        z-index: 1000;
     }
 
     .top_btn {

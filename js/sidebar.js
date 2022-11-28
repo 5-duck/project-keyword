@@ -1,31 +1,18 @@
+
 export const sideToggle = function sideToggle() {
+    // 햄버거 버튼
     const arrow = document.querySelector(".arrow");   
+
+    // 사이드바
     const sidebar = document.getElementById("sidebar");
-    console.log(sidebar.getBoundingClientRect());
 
-    function append() { 
-        const sidebar = document.getElementById("sidebar");
-        if ( sidebar.getBoundingClientRect().x <= -1525 ) {
-            sidebar.classList.add('block')
-            alert('보임')
-        }  
-        else // (sidebar.getBoundingClientRect().x= 0 )
-        {
-            sidebar.classList.remove('block')
-            sidebar.classList.add('none');
-            alert('가림')
-        }
+    // Toggle 실행 함수
+    if (arrow.id == 'arrow_close') {
+        sidebar.classList.add('block');
+        arrow.id = 'arrow_show';
+    } else {
+        sidebar.classList.remove('block');
+        arrow.id = 'arrow_close';
     }
-    function show() {
-        arrow.addEventListener('click', append)
-        }
-
-    return show();
 }
 
-// #sidebar.hide {
-//     left: -100%;
-// }
-// #sidebar.show {
-//     left: 0%;
-// }

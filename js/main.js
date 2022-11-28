@@ -33,6 +33,9 @@ import { save_post, update_post, onEditing, delete_post, seeMyPost, /* ddd */ se
 import{ seeMyComment } from "./pageJs/comment.js";
 // gg끝
 
+// 휘인 sidebar toggle 추가
+import { sideToggle } from "./sidebar.js" ;
+
 
 
 // hash url 변경 시 처리
@@ -105,3 +108,6 @@ window.seeMyPost = seeMyPost;
 window.goToMyPage = goToMyPage;
 window.search_post = search_post;
 window.seeMyComment=seeMyComment;
+
+// 휘인 함수 연결
+window.sideToggle = sideToggle;
