@@ -23,7 +23,7 @@ export const loginAction = (event) => {
 
   // 유효성 검사 진행
   if (!emailVal) {
-    alert("이메일을 입력해 주세요");
+    // alert("이메일을 입력해 주세요");
     email.focus();
     return;
   }

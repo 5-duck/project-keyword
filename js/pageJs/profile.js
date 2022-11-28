@@ -46,7 +46,7 @@ export const changeProfile = async (event) => {
       console.log('프로필 수정 완료!_근데 이거여러번뜨냥 _')
     })
     .catch((error) => {
-      alert("프로필 수정 실패");
+      // alert("프로필 수정 실패");
       console.log("error:", error);
     });
 };

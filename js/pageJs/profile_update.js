@@ -59,8 +59,8 @@ export const feed_openModal = async (createAtNum) => {
      </div>
      <a class="nickname" title="nickname" target="_blank">${cmtObj.nickname}</a>
      <div class="category_wrap">
-       <p class="category">#hashTag</p>
-     </div>
+                <p class="category">${cmtObj.keyword}</p>
+              </div>
      <div class="modal_text_box">
        <div id="targetCommentsText">${cmtObj.text}</div>
      </div>
@@ -75,7 +75,7 @@ export const feed_openModal = async (createAtNum) => {
              <a class="comment_btn" onclick="saveTargetComments(${cmtObj.createdAt})">등록</a>
            </div>
          </form>
-        <button type="button" onclick="targetCommentsSearch(${cmtObj.createdAt})">해당 게시물 댓글보기</button>
+        <button type="button" class="comment_btn" onclick="targetCommentsSearch(${cmtObj.createdAt})">해당 게시물 댓글보기</button>
        <div class="yj_comment_container" id="target_comments">
        </div>
        </div>
@@ -139,8 +139,15 @@ export const targetCommentsSearch = async (createAtId) => {
   const { displayName } = authService.currentUser;
   targetCmtObjList.forEach((cmtObj) => {
     const temp_html = `
-    <div>댓글내용 : <div id="textContent">${cmtObj.text}</div></div>
-    <div>댓글작성자 : <div>${displayName}</div></div>
+    <div class="flex comment_contents_wrap">
+  <div class="comment_contetns_title">댓글내용 :</div>
+  <div id="textContent" class="comment_contetns">${cmtObj.text}</div>
+</div>
+
+<div class="flex writer">
+    <div class="comment_writer">댓글작성자 :</div>
+    <div class="comment_user">${displayName}</div>
+</div>
   `;
     const div = document.createElement("div");
     div.classList.add("parentId1");
@@ -152,3 +159,12 @@ export const targetCommentsSearch = async (createAtId) => {
 //🌼🌼🌼🌼🌼🌼🌼🌼 마지막 연결하장 (끝)🌼🌼🌼🌼🌼🌼🌼
 
 
+{/* <div class="flex comment_contents">
+  <div>댓글내용 :</div>
+  <div id="textContent">${cmtObj.text}</div>
+</div>
+
+<div class="flex writer">
+    <div>댓글작성자 :</div>
+    <div>${displayName}</div>
+</div> */}

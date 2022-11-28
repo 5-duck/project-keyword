@@ -270,8 +270,7 @@ body {
   height: 100%;
   border: 1px solid #ffa920;
   border-radius: 15px;
-  background-color: white;
-
+  background-color: #f2f2f2
   /* background-color: aquamarine; */
 }
 
@@ -307,18 +306,19 @@ body {
 
 #modal_post_container #post_wrap .profile {
   position: relative;
-  margin-top: 30px;
-  margin-left: 30px;
+  margin-top: 0px;
+  margin-left: 50px;
   margin-bottom: 20px;
   display: inline-block;
   width: 90px;
   height: 90px;
-  background-image: url(../image/Keyword.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background-image: url(../image/Keyword.png); */
+  /* background-position: center; */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
   border: 1px solid black;
   border-radius: 30px;
+  
 }
 
 #modal_post_container #post_wrap .nickname {
@@ -336,22 +336,21 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 100px;
-  margin-right: 40px;
+  margin-top: 65px;
+  margin-right: 50px;
   padding: 5px;
-  font-size: 20px;
-  
+  font-size: 14px;
   /* background-color: red; */
 }
 
 
 #modal_post_container .comment_box {
-  max-width: 660px;
+  max-width: 650px;
   width: 100%;
   margin: 0 auto;
   margin-bottom: 20px;
   border: 1px solid #aaa;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 #modal_post_container .comment {
@@ -364,25 +363,23 @@ body {
   margin-bottom: 15px;
   padding: 3px 10px;
   border: 1px solid #aaa;
-  font-size: 16px;
+  border-radius: 15px;
   color: #333;
   font-size: 14px;
   line-height: 1.75;
   letter-spacing: -0.01em;
+  /* background-color: red; */
 }
 
 #modal_post_container .comment_btn {
-  display: inline-block;
-  /* width: 100%; */
-  padding: 3px 8px;
-  margin-bottom: 15px;
-  margin-left: 550px;
-  font-size: 20px;
-  text-align: center;
-  border: 1px solid #333;
-  border-radius: 10px;
-  transition-duration: .3s;
-  left: 450px;
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    transition-duration: .3s;
 }
 
 #modal_post_container .comment_btn:hover {

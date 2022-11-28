@@ -127,9 +127,14 @@
 }
 
 #form_sort_wrap div#join_btn {
-  width: 150px;
+  width: 300px;
+  margin-top: 80px;
 }
 
 #form_sort_wrap #re_password_wrap {
   margin-bottom: 25px;
+}
+
+#yj_name{
+  margin-bottom: 20px;
 }

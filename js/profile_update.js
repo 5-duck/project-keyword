@@ -66,18 +66,18 @@ export const feed_openModal = async (createAtNum) => {
      
   //    <!-- 댓글창 -->
   //    <!-- 여기있는거 복붙 -->
-  //    <div id="yj_commment_container_hi">
-  //      <div class="yj_comment">#comment</div>
-  //      <form method="post" id="post_form">
-  //          <div class="comment_box">
-  //            <input type="text" class="comment" id="targetCommentsText"/>
-  //            <button type="button" class="comment_btn" onclick="saveTargetComments(${cmtObj.createdAt})">등록</button>
-  //          </div>
-  //        </form>
-  //       <button type="button" onclick="targetCommentsSearch(${cmtObj.createdAt})">해당 게시물 댓글보기</button>
-  //      <div class="yj_comment_container" id="target_comments">
-  //      </div>
-  //      </div>
+    //  <div id="yj_commment_container_hi">
+    //    <div class="yj_comment">#comment</div>
+    //    <form method="post" id="post_form">
+    //        <div class="comment_box">
+    //          <input type="text" class="comment" id="targetCommentsText"/>
+    //          <button type="button" class="comment_btn" onclick="saveTargetComments(${cmtObj.createdAt})">등록</button>
+    //        </div>
+    //      </form>
+    //     <button type="button" onclick="targetCommentsSearch(${cmtObj.createdAt})">해당 게시물 댓글보기</button>
+    //    <div class="yj_comment_container" id="target_comments">
+    //    </div>
+    //    </div>
   //    </div>
   //  </div>`;
     const temp_html=`<div>여기까진 작동되니?</div>`
