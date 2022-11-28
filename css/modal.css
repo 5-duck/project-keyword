@@ -160,6 +160,7 @@ body {
   height: 40px;
   background-color: black;
   border-radius: 50%;
+  overflow: hidden;
 }
 .modal_user_nickname {
   position: absolute;

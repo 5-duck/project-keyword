@@ -1,4 +1,3 @@
-
 export const sideToggle = function sideToggle() {
     const arrow = document.querySelector(".arrow");   
     const sidebar = document.getElementById("sidebar");

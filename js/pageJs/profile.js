@@ -42,6 +42,7 @@ export const changeProfile = async (event) => {
     photoURL: downloadUrl ? downloadUrl : null,
   })
     .then(() => {
+      window.location.reload();
       console.log('프로필 수정 완료!_근데 이거여러번뜨냥 _')
     })
     .catch((error) => {
