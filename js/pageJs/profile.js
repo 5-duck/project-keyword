@@ -54,7 +54,7 @@ export const changeProfile = async (event) => {
 
 
 export const DeletePhoto = () => {
-  document.getElementById("profileView").src = "/image/Keyword.png";
+  document.getElementById("profileView1").src = "/image/Keyword.png";
   
   };
 

@@ -11,15 +11,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { dbService, authService } from "../firebase.js";
 
-
 // 글 등록
-export const save_post = async () => {
-
-    /* ddd시작 */
-    const drop_keyword = document.getElementById("drop_keyword");
-    /* ddd끝 */
-
+export const save_post = async (event) => {
   const post = document.getElementById("post");
+  // 🌸🌸🌸🌸🌸🌸🌸키워드 데려오기(시작)🌸🌸🌸🌸🌸🌸🌸🌸 
+  const jjintest=document.getElementsByClassName("modal_dropbtn_content");
+  const jjinmack=jjintest[0].innerHTML;
+  console.log('jjintest:',jjintest[0].innerHTML)
+  // 🌸🌸🌸🌸🌸🌸🌸키워드 데려오기(끝)🌸🌸🌸🌸🌸🌸🌸🌸 
   const { uid, photoURL, displayName } = authService.currentUser;
   try {
     /* try=default catch 예외발생시 에러처리 */
@@ -31,12 +30,14 @@ export const save_post = async () => {
         creatorId: uid,
         profileImg: photoURL,
         nickname: displayName,
-        /* ddd시작 */
-        drop_keyword : drop_keyword.innerText
-        /* ddd끝 */
+        // 🌸🌸🌸🌸🌸🌸🌸키워드 데려오기(시작)🌸🌸🌸🌸🌸🌸🌸🌸 
+        keyword:jjinmack,
+        // 🌸🌸🌸🌸🌸🌸🌸키워드 데려오기(끝)🌸🌸🌸🌸🌸🌸🌸🌸 
+        // 🌸🌸🌸🌸🌸🌸🌸아래 135번라인도 수정 필요🌸🌸🌸🌸🌸🌸🌸🌸 
       });
       post.value = "";
-      closeModal();
+      alert('게시물 저장이 완료되었습니다!>_<')
+      window.location.reload()
       getpostList();
     } else {
       alert("내용을 입력하세요");
@@ -95,11 +96,12 @@ export const update_post = async (event) => {
 export const delete_post = async (event) => {
   event.preventDefault();
   const id = event.target.name;
-  const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
+  const ok = window.confirm("해당 게시글을 삭제하시겠습니까?");
   if (ok) {
     try {
       await deleteDoc(doc(dbService, "posts", id));
-      getpostList();
+      alert("삭제가 완료되었습니다!");
+      window.location.reload();
     } catch (error) {
       alert(error);
     }
@@ -131,7 +133,7 @@ export const getpostList = async () => {
               </div>
               <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
               <div class="category_wrap">
-                <p class="category">${cmtObj.drop_keyword}</p>
+                <p class="category">${cmtObj.keyword}</p>
               </div>
             </div>
             <div class="text_box">${cmtObj.text}</div>
@@ -173,28 +175,27 @@ export  const seeMyPost = async() => {
   cmtObjList.forEach(cmtObj => {
     const isOwner = currentUid === cmtObj.creatorId;
     const temp_html = 
-    `<form method="get" action="" class="my_post flex">
-    <div id="post_wrap" onclick="feed_openModal()">
-      <div class="post_top_wrap">
-        <div class="profile">
-          <img class="cmtImg" width="50px" height="50px" src="${cmtObj.profileImg}" alt="profileImg" />
-          <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
-        </div>
-        <div class="category_wrap">
-          <p class="category">${cmtObj.drop_keyword}</p>
-        </div>
-      </div>
-      <div class="text_box">${cmtObj.text}</div>
-      <p id="${cmtObj.id}" class="noDisplay">
-      <div class="cmtAt">${new Date(cmtObj.createdAt).toString().slice(0, 25)}</div>
-      <div class="${isOwner ? "updateBtns" : "noDisplay"}">
-        <div class="revise_wrap hide">
-            <input type="submit" value="수정" class="edit" onclick="onEditing(event)"/>
-            <input type="submit" value="삭제" class="cut" name="${cmtObj.id}" onclick="delete_post(event)"/>
-        </div>
-      </div>
-    </div>
-  </form>`;
+    `<div id="post_wrap" onclick="feed_openModal(${cmtObj.createdAt})">
+            <div class="post_top_wrap">
+              <div class="profile">
+                <img class="cmtImg" width="50px" height="50px" src="${cmtObj.profileImg}" alt="profileImg" />
+              </div>
+              <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
+              <div class="category_wrap">
+                <p class="category">${cmtObj.keyword}</p>
+              </div>
+            </div>
+            <div class="text_box">${cmtObj.text}</div>
+            <p id="${cmtObj.id}" class="noDisplay">
+            <div class="cmtAt">${new Date(cmtObj.createdAt).toString().slice(0, 25)}</div>
+            <div class="${isOwner ? "updateBtns" : "noDisplay"}">
+              <div class="revise_wrap hide">
+                  <input type="submit" value="수정" class="edit" onclick="onEditing(event)"/>
+                  <input type="submit" value="삭제" class="cut" name="${cmtObj.id}" onclick="delete_post(event)"/>
+              </div>
+            </div>
+          </div>
+        `
     const div = document.createElement("div");
     div.classList.add("mycards");
     div.innerHTML = temp_html;
@@ -215,7 +216,7 @@ export const search_post = async () => {
     cmtObjList.push(postObj);
   });
   const searchWord = document.getElementById('search_contents').value;
-  const commnetList = document.getElementById("filtering-list");
+  const commnetList = document.getElementById("post-list");
   const currentUid = authService.currentUser.uid;
   commnetList.innerHTML = "";
 
@@ -223,29 +224,28 @@ export const search_post = async () => {
 
   arr.forEach((cmtObj) => {
     const isOwner = currentUid === cmtObj.creatorId; /* 사용자정보의 creatorId를 대입 */
-    const temp_html = 
-      `<form method="get" action="" class="my_post flex">
-      <div id="post_wrap" onclick="feed_openModal()">
-        <div class="post_top_wrap">
-          <div class="profile">
-            <img class="cmtImg" width="50px" height="50px" src="${cmtObj.profileImg}" alt="profileImg" />
-            <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
+    const temp_html =         
+        `<div id="post_wrap" onclick="feed_openModal(${cmtObj.createdAt})">
+            <div class="post_top_wrap">
+              <div class="profile">
+                <img class="cmtImg" width="50px" height="50px" src="${cmtObj.profileImg}" alt="profileImg" />
+              </div>
+              <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
+              <div class="category_wrap">
+                <p class="category">${cmtObj.drop_keyword}</p>
+              </div>
+            </div>
+            <div class="text_box">${cmtObj.text}</div>
+            <p id="${cmtObj.id}" class="noDisplay">
+            <div class="cmtAt">${new Date(cmtObj.createdAt).toString().slice(0, 25)}</div>
+            <div class="${isOwner ? "updateBtns" : "noDisplay"}">
+              <div class="revise_wrap hide">
+                  <input type="submit" value="수정" class="edit" onclick="onEditing(event)"/>
+                  <input type="submit" value="삭제" class="cut" name="${cmtObj.id}" onclick="delete_post(event)"/>
+              </div>
+            </div>
           </div>
-          <div class="category_wrap">
-            <p class="category">${cmtObj.drop_keyword}</p>
-          </div>
-        </div>
-        <div class="text_box">${cmtObj.text}</div>
-        <p id="${cmtObj.id}" class="noDisplay">
-        <div class="cmtAt">${new Date(cmtObj.createdAt).toString().slice(0, 25)}</div>
-        <div class="${isOwner ? "updateBtns" : "noDisplay"}">
-          <div class="revise_wrap hide">
-              <input type="submit" value="수정" class="edit" onclick="onEditing(event)"/>
-              <input type="submit" value="삭제" class="cut" name="${cmtObj.id}" onclick="delete_post(event)"/>
-          </div>
-        </div>
-      </div>
-    </form>`;
+        `;
     
     const div = document.createElement("div");
     div.classList.add("mycards");

@@ -40,14 +40,14 @@ export  const seeMyPost = async() => {
               </div>
               <a class="nickname" href="#" title="nickname" target="_blank"><span>${cmtObj.nickname ?? "닉네임 없음"}</span></a>
               <div class="category_wrap">
-                  <p class="category">#hashTag</p>
+                  <p class="category">${cmtObj.keyword}</p>
               </div>
               <div class="text_box">${cmtObj.text}</div>
               <div class="cmtAt my">${new Date(cmtObj.createdAt).toString().slice(0, 25)}</div>
               <p id="${cmtObj.id}" class="noDisplay"></p>
               <div class="${isOwner ? "updateBtns" : "noDisplay"}">
                 <div class="revise_wrap">
-                    <input type="button" value="수정" class="edit" onclick="onEditing(event)"/>
+                    <!-- <input type="button" value="수정" class="edit" onclick="onEditing(event)"/> -->
                     <input type="button" value="삭제" class="cut" name="${cmtObj.id}" onclick="delete_post(event)"/>
                 </div>
               </div>

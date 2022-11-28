@@ -2,8 +2,70 @@
     <!-- <div class="empty_box"></div> -->
     <p class="title">내가 쓴 글 보기</p>
     <div class="swap_btn_wrap flex">
-        <a href="#mypage" class="btn">게시글보기</a>
-        <button class="btn"><a href="#comment">내댓글 보기</a></button>
+        <!-- <a href="#mypage" class="btn">게시글보기</a> -->
+        <button class="btn"><a href="#main">메인으로</a></button>
+    </div>
+</div>
+
+<div class="modal hidden">
+    <div class="modal_overlay" onclick="closeModal()"></div>
+    <div class="modal_content">
+        <div class="modal_box">
+            <div class="modal_header">뉴스피드 등록</div>
+            <div class="dropdown">
+                <button class="modal_dropbtn" onclick="modaldropdown()">
+                    <span class="modal_dropbtn_icon">more_horiz</span>
+                    <span class="modal_dropbtn_content">#Keyword...</span>
+                    <span class="modal_dropbtn_click" style="
+                      font-family: Material Icons;
+                      font-size: 16px;
+                      color: #3b3b3b;
+                      float: right;">arrow_drop_down</span>
+                </button>
+                <div class="modal_dropdown_content">
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #운동
+                    </div>
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #개발공부
+                    </div>
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #카페
+                    </div>
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #인스턴트
+                    </div>
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #게임
+                    </div>
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #오둥이
+                    </div>
+                    <div class="drop_keyword" id="drop_keyword" onclick="modalshowMenu(this.innerText)">
+                        #잡담
+                    </div>
+                </div>
+            </div>
+            <div class="modal_user">
+                <div class="modal_user_box">
+                    <div class="modal_user_pic">
+                        <img class="cmtImg" src="" id="cmtImg"/>
+                    </div>
+                    <div class="modal_user_nickname">
+                        <span id="nickname1">닉네임 없음</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <textarea class="modal_textarea" id="post"></textarea>
+            </div>
+            <div class="btn_box">
+                <button class="com_btn" onclick="save_post()">게시</button>
+                <button class="close_modal close_btn" onclick="closeModal()">
+                    닫기
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
